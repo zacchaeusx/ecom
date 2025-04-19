@@ -273,7 +273,14 @@ body {
           background-color: #d32f2f;
         }
 
-        /* Hide fixed buttons on Summary tab */
-        #Summary ~ .fixed-buttons {
-            display: none;
+
+
+        /* Hide debug output on touch devices */
+        @media (hover: none) and (pointer: coarse) {
+            #debug-output {
+                display: none;
+            }
         }
+
+
+
