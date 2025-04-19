@@ -1,0 +1,274 @@
+body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            /* margin: 0 auto; */
+            margin: 70px auto 20px; /* 70px top margin for the fixed tab */
+            padding: 20px;
+
+        }
+
+        .tab {
+            position: fixed;  /* Makes it stay in place */
+            top: 0;          /* Positions at top of viewport */
+            left: 0;         /* Aligns to left edge */
+            width: 100%;     /* Full width */
+            z-index: 1000;   /* Ensures it stays above other content */
+            
+            /* Your existing styles */
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+            
+            /* Add padding to prevent content overlap */
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .tabcontent:first-child {
+            margin-top: 60px; /* Prevents overlap with fixed tab bar */
+        }
+        
+        .calculator {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .results {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .report-section {
+            margin-top: 30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .report-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+        }
+        .report-body {
+            padding: 0;
+        }
+        .report-row {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            padding: 10px 15px;
+        }
+        .report-row:last-child {
+            border-bottom: none;
+        }
+        .report-row.total {
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+        .report-row.highlight {
+            font-weight: bold;
+            background-color: #e6f7ff;
+        }
+        .report-label {
+            flex: 2;
+        }
+        .report-value {
+            flex: 1;
+            text-align: right;
+        }
+        .metrics-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .metric-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .positive {
+            color: #4CAF50;
+        }
+        .negative {
+            color: #f44336;
+        }
+
+        .calc-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .calc-btn:hover {
+            background-color: #45a049;
+        }
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        .summary-platform {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+        }
+        .summary-platform h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .summary-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .comparison-table tr:hover {
+            background-color: #e6f7ff;
+        }
+
+        .comparison-table .positive {
+            color: #4CAF50;
+        }
+        .comparison-table .negative {
+            color: #f44336;
+        }
+
+        .reset-btn {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .reset-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .calc-btn {
+            width: 100%;
+            margin-top: 0; /* Remove the previous margin */
+        }
+
+        /* Fixed buttons container */
+        .fixed-buttons {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          z-index: 1000;
+        }
+
+        /* Fixed Calculate button */
+        .fixed-calc-btn {
+          background-color: #4CAF50;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          transition: background-color 0.3s;
+        }
+
+        .fixed-calc-btn:hover {
+          background-color: #45a049;
+        }
+
+        /* Fixed Reset button */
+        .fixed-reset-btn {
+          background-color: #f44336;
+          color: white;
+          padding: 12px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 16px;
+          font-weight: bold;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          transition: background-color 0.3s;
+        }
+
+        .fixed-reset-btn:hover {
+          background-color: #d32f2f;
+        }

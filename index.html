@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Profit Calculator</title>
+    
+    <!-- Linking CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="tab">
+        <button class="tablinks active" onclick="openTab(event, 'Shopee')">Shopee</button>
+        <button class="tablinks" onclick="openTab(event, 'Lazada')">Lazada</button>
+        <button class="tablinks" onclick="openTab(event, 'TikTok')">TikTok</button>
+        <button class="tablinks" onclick="openTab(event, 'Summary')">Summary</button>
+    </div>
+
+    <div id="Shopee" class="tabcontent" style="display: block;">
+        <h2>Shopee Profit Calculator</h2>
+
+        
+        <div class="calculator">
+            <div>
+                <div class="input-group">
+                    <label for="grossPrice-shopee">Gross Price $</label>
+                    <input type="number" id="grossPrice-shopee" value="16" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="discount-shopee">Discount %</label>
+                    <input type="number" id="discount-shopee" value="10" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="cogs-shopee">COGS/UNIT $</label>
+                    <input type="number" id="cogs-shopee" value="0.75" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="units-shopee">UNITS</label>
+                    <input type="number" id="units-shopee" value="6" step="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="boxCost-shopee">Box/Unit $</label>
+                    <input type="number" id="boxCost-shopee" value="0.44" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="boxUnits-shopee">Box Units</label>
+                    <input type="number" id="boxUnits-shopee" value="1" step="1">
+                </div>
+            </div>
+            
+            <div>
+                <div class="input-group">
+                    <label for="gst-shopee">GST %</label>
+                    <input type="number" id="gst-shopee" value="9" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="commission-shopee">Nett Commission Fees %</label>
+                    <input type="number" id="commission-shopee" value="7.63" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="grossTxnFee-shopee">Gross Transaction Fees %</label>
+                    <input type="number" id="grossTxnFee-shopee" value="3" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="nettServiceFee-shopee">Nett Service Fees %</label>
+                    <input type="number" id="nettServiceFee-shopee" value="3.27" step="0.01">
+                </div>
+            </div>
+
+            <div>    
+                <div class="input-group">
+                    <label for="sellerVouchers-shopee">Seller Vouchers $</label>
+                    <input type="number" id="sellerVouchers-shopee" value="0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="shopeeVouchers-shopee">Shopee Vouchers $</label>
+                    <input type="number" id="shopeeVouchers-shopee" value="0" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="shopeeCoins-shopee">Shopee Coins Used $</label>
+                    <input type="number" id="shopeeCoins-shopee" value="0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="buyerShipping-shopee">Buyer Shipping Fees $</label>
+                    <input type="number" id="buyerShipping-shopee" value="1.99" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="sellerShipping-shopee">Seller Shipping Fees $</label>
+                    <input type="number" id="sellerShipping-shopee" value="2.03" step="0.01">
+                </div>
+            </div>
+
+        </div>
+      
+        <div style="display: flex; gap: 15px; margin-top: 10px;">
+            <button class="calc-btn" onclick="calculate('shopee')">Calculate</button>  
+            <button class="reset-btn" onclick="resetTab('shopee')">Reset</button>
+        </div>
+
+        
+        <div class="results">
+            <div class="section-title">Calculated Fields</div>
+            <div class="input-group">
+                <label>Net Transaction Fee %</label>
+                <input type="text" id="netTxnFeePct-shopee" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Comms Base Price1 $</label>
+                <input type="text" id="commsBasePrice-shopee" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Txn Base Price2 $</label>
+                <input type="text" id="txnBasePrice-shopee" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Comms Fee $</label>
+                <input type="text" id="commsFee-shopee" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Transaction Fee $</label>
+                <input type="text" id="txnFee-shopee" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Service Fee $</label>
+                <input type="text" id="serviceFee-shopee" readonly>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <div class="report-header">Profit & Loss Statement</div>
+            <div class="report-body">
+                <div class="report-row">
+                    <div class="report-label">Gross Price</div>
+                    <div class="report-value" id="grossPriceDisplay-shopee">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Discount</div>
+                    <div class="report-value" id="discountAmount-shopee">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Seller Vouchers</div>
+                    <div class="report-value" id="sellerVouchersDisplay-shopee">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Shopee Coins</div>
+                    <div class="report-value" id="platformCoinsDisplay-shopee">$0.00</div>
+                </div>
+                <div class="report-row total">
+                    <div class="report-label">Net Price</div>
+                    <div class="report-value" id="netPrice-shopee">$0.00</div>
+                </div>
+                
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- COGS</div>
+                    <div class="report-value" id="totalCogs-shopee">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Boxes</div>
+                    <div class="report-value" id="totalBoxCost-shopee">$0.00</div>
+                </div>
+                <div class="report-row total">
+                    <div class="report-label">Gross Profit</div>
+                    <div class="report-value" id="grossProfit-shopee">$0.00</div>
+                </div>
+                
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Comms Fee</div>
+                    <div class="report-value" id="commsFeeDisplay-shopee">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Transaction Fee</div>
+                    <div class="report-value" id="txnFeeDisplay-shopee">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Service Fee</div>
+                    <div class="report-value" id="serviceFeeDisplay-shopee">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Seller Shipping</div>
+                    <div class="report-value" id="sellerShippingDisplay-shopee">$0.00</div>
+                </div>
+                <div class="report-row highlight">
+                    <div class="report-label">NET PROFIT/(LOSS)</div>
+                    <div class="report-value" id="nettProfitLoss-shopee">$0.00</div>
+                </div>
+                <div class="report-row highlight">
+                    <div class="report-label">NET CASH FLOW</div>
+                    <div class="report-value" id="netCashFlow-shopee">$0.00</div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="report-section" style="margin-top: 20px;">
+            <div class="report-header">Performance Metrics</div>
+            <div class="report-body">
+                <div class="metrics-container">
+                    <div class="metric-card">
+                        <div>Net Profit %</div>
+                        <div class="metric-value" id="netProfitPct-shopee">0.00%</div>
+                        <div>(Net Profit / Net Price)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div>Margin %</div>
+                        <div class="metric-value" id="marginPct-shopee">0.00%</div>
+                        <div>(Net Profit / COGS)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Lazada" class="tabcontent">
+        <h2>Lazada Profit Calculator</h2>
+        
+        <div class="calculator">
+            <div>
+                <div class="input-group">
+                    <label for="grossPrice-lazada">Gross Price $</label>
+                    <input type="number" id="grossPrice-lazada" value="16" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="discount-lazada">Discount %</label>
+                    <input type="number" id="discount-lazada" value="5" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="cogs-lazada">COGS/UNIT $</label>
+                    <input type="number" id="cogs-lazada" value="0.75" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="units-lazada">UNITS</label>
+                    <input type="number" id="units-lazada" value="6" step="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="boxCost-lazada">Box/Unit $</label>
+                    <input type="number" id="boxCost-lazada" value="0.44" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="boxUnits-lazada">Box Units</label>
+                    <input type="number" id="boxUnits-lazada" value="1" step="1">
+                </div>
+            </div>
+            
+            <div>
+                <div class="input-group">
+                    <label for="gst-lazada">GST %</label>
+                    <input type="number" id="gst-lazada" value="9" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="commission-lazada">Nett Commission Fees %</label>
+                    <input type="number" id="commission-lazada" value="4.36" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="grossTxnFee-lazada">Gross Transaction Fees %</label>
+                    <input type="number" id="grossTxnFee-lazada" value="2" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="nettServiceFee-lazada">Nett Service Fees %</label>
+                    <input type="number" id="nettServiceFee-lazada" value="0" step="0.01">
+                </div>
+            </div>
+
+            <div>    
+                <div class="input-group">
+                    <label for="sellerVouchers-lazada">Seller Vouchers $</label>
+                    <input type="number" id="sellerVouchers-lazada" value="0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="lazadaVouchers-lazada">Lazada Vouchers $</label>
+                    <input type="number" id="lazadaVouchers-lazada" value="0" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="lazadaCoins-lazada">Lazada Coins Used $</label>
+                    <input type="number" id="lazadaCoins-lazada" value="0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="buyerShipping-lazada">Buyer Shipping Fees $</label>
+                    <input type="number" id="buyerShipping-lazada" value="1.99" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="sellerShipping-lazada">Seller Shipping Fees $</label>
+                    <input type="number" id="sellerShipping-lazada" value="1.53" step="0.01">
+                </div>
+            </div>
+        </div>
+        
+
+        <div style="display: flex; gap: 15px; margin-top: 10px;">
+            <button class="calc-btn" onclick="calculate('lazada')">Calculate</button>
+            <button class="reset-btn" onclick="resetTab('lazada')">Reset</button>
+        </div>
+        
+        <div class="results">
+            <div class="section-title">Calculated Fields</div>
+            <div class="input-group">
+                <label>Net Transaction Fee %</label>
+                <input type="text" id="netTxnFeePct-lazada" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Comms Base Price1 $</label>
+                <input type="text" id="commsBasePrice-lazada" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Txn Base Price2 $</label>
+                <input type="text" id="txnBasePrice-lazada" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Comms Fee $</label>
+                <input type="text" id="commsFee-lazada" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Transaction Fee $</label>
+                <input type="text" id="txnFee-lazada" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Service Fee $</label>
+                <input type="text" id="serviceFee-lazada" readonly>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <div class="report-header">Profit & Loss Statement</div>
+            <div class="report-body">
+                <div class="report-row">
+                    <div class="report-label">Gross Price</div>
+                    <div class="report-value" id="grossPriceDisplay-lazada">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Discount</div>
+                    <div class="report-value" id="discountAmount-lazada">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Seller Vouchers</div>
+                    <div class="report-value" id="sellerVouchersDisplay-lazada">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Lazada Coins</div>
+                    <div class="report-value" id="platformCoinsDisplay-lazada">$0.00</div>
+                </div>
+                <div class="report-row total">
+                    <div class="report-label">Net Price</div>
+                    <div class="report-value" id="netPrice-lazada">$0.00</div>
+                </div>
+                
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- COGS</div>
+                    <div class="report-value" id="totalCogs-lazada">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Boxes</div>
+                    <div class="report-value" id="totalBoxCost-lazada">$0.00</div>
+                </div>
+                <div class="report-row total">
+                    <div class="report-label">Gross Profit</div>
+                    <div class="report-value" id="grossProfit-lazada">$0.00</div>
+                </div>
+                
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Comms Fee</div>
+                    <div class="report-value" id="commsFeeDisplay-lazada">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Transaction Fee</div>
+                    <div class="report-value" id="txnFeeDisplay-lazada">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Service Fee</div>
+                    <div class="report-value" id="serviceFeeDisplay-lazada">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Seller Shipping</div>
+                    <div class="report-value" id="sellerShippingDisplay-lazada">$0.00</div>
+                </div>
+                <div class="report-row highlight">
+                    <div class="report-label">NET PROFIT/(LOSS)</div>
+                    <div class="report-value" id="nettProfitLoss-lazada">$0.00</div>
+                </div>
+                <div class="report-row highlight">
+                    <div class="report-label">NET CASH FLOW</div>
+                    <div class="report-value" id="netCashFlow-lazada">$0.00</div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="report-section" style="margin-top: 20px;">
+            <div class="report-header">Performance Metrics</div>
+            <div class="report-body">
+                <div class="metrics-container">
+                    <div class="metric-card">
+                        <div>Net Profit %</div>
+                        <div class="metric-value" id="netProfitPct-lazada">0.00%</div>
+                        <div>(Net Profit / Net Price)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div>Margin %</div>
+                        <div class="metric-value" id="marginPct-lazada">0.00%</div>
+                        <div>(Net Profit / COGS)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="TikTok" class="tabcontent">
+        <h2>TikTok Profit Calculator</h2>
+        
+        <div class="calculator">
+            <div>
+                <div class="input-group">
+                    <label for="grossPrice-tiktok">Gross Price $</label>
+                    <input type="number" id="grossPrice-tiktok" value="16" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="discount-tiktok">Discount %</label>
+                    <input type="number" id="discount-tiktok" value="15" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="cogs-tiktok">COGS/UNIT $</label>
+                    <input type="number" id="cogs-tiktok" value="0.75" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="units-tiktok">UNITS</label>
+                    <input type="number" id="units-tiktok" value="6" step="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="boxCost-tiktok">Box/Unit $</label>
+                    <input type="number" id="boxCost-tiktok" value="0.44" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="boxUnits-tiktok">Box Units</label>
+                    <input type="number" id="boxUnits-tiktok" value="1" step="1">
+                </div>
+            </div>
+            
+            <div>
+                <div class="input-group">
+                    <label for="gst-tiktok">GST %</label>
+                    <input type="number" id="gst-tiktok" value="9" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="commission-tiktok">Nett Commission Fees %</label>
+                    <input type="number" id="commission-tiktok" value="4.905" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="grossTxnFee-tiktok">Gross Transaction Fees %</label>
+                    <input type="number" id="grossTxnFee-tiktok" value="2" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="nettServiceFee-tiktok">Nett Service Fees %</label>
+                    <input type="number" id="nettServiceFee-tiktok" value="0" step="0.01">
+                </div>
+            </div>
+
+            <div>    
+                <div class="input-group">
+                    <label for="sellerVouchers-tiktok">Seller Vouchers $</label>
+                    <input type="number" id="sellerVouchers-tiktok" value="0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="tiktokVouchers-tiktok">Tiktok Vouchers $</label>
+                    <input type="number" id="tiktokVouchers-tiktok" value="0" step="0.01">
+                </div>
+
+                <div class="input-group">
+                    <label for="tiktokCoins-tiktok">Tiktok Coins Used $</label>
+                    <input type="number" id="tiktokCoins-tiktok" value="0" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="buyerShipping-tiktok">Buyer Shipping Fees $</label>
+                    <input type="number" id="buyerShipping-tiktok" value="1.99" step="0.01">
+                </div>
+                
+                <div class="input-group">
+                    <label for="sellerShipping-tiktok">Seller Shipping Fees $</label>
+                    <input type="number" id="sellerShipping-tiktok" value="1.53" step="0.01">
+                </div>
+            </div>    
+        </div>
+        
+        <div style="display: flex; gap: 15px; margin-top: 10px;">
+            <button class="calc-btn" onclick="calculate('tiktok')">Calculate</button>
+            <button class="reset-btn" onclick="resetTab('tiktok')">Reset</button>
+        </div>
+        
+        <div class="results">
+            <div class="section-title">Calculated Fields</div>
+            <div class="input-group">
+                <label>Net Transaction Fee %</label>
+                <input type="text" id="netTxnFeePct-tiktok" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Comms Base Price1 $</label>
+                <input type="text" id="commsBasePrice-tiktok" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Txn Base Price2 $</label>
+                <input type="text" id="txnBasePrice-tiktok" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Comms Fee $</label>
+                <input type="text" id="commsFee-tiktok" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Transaction Fee $</label>
+                <input type="text" id="txnFee-tiktok" readonly>
+            </div>
+            
+            <div class="input-group">
+                <label>Service Fee $</label>
+                <input type="text" id="serviceFee-tiktok" readonly>
+            </div>
+        </div>
+        
+        <div class="report-section">
+            <div class="report-header">Profit & Loss Statement</div>
+            <div class="report-body">
+                <div class="report-row">
+                    <div class="report-label">Gross Price</div>
+                    <div class="report-value" id="grossPriceDisplay-tiktok">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Discount</div>
+                    <div class="report-value" id="discountAmount-tiktok">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Seller Vouchers</div>
+                    <div class="report-value" id="sellerVouchersDisplay-tiktok">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Tiktok Coins</div>
+                    <div class="report-value" id="platformCoinsDisplay-tiktok">$0.00</div>
+                </div>
+
+
+                
+
+                <div class="report-row total">
+                    <div class="report-label">Net Price</div>
+                    <div class="report-value" id="netPrice-tiktok">$0.00</div>
+                </div>
+                
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- COGS</div>
+                    <div class="report-value" id="totalCogs-tiktok">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Boxes</div>
+                    <div class="report-value" id="totalBoxCost-tiktok">$0.00</div>
+                </div>
+                <div class="report-row total">
+                    <div class="report-label">Gross Profit</div>
+                    <div class="report-value" id="grossProfit-tiktok">$0.00</div>
+                </div>
+                
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Comms Fee</div>
+                    <div class="report-value" id="commsFeeDisplay-tiktok">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Transaction Fee</div>
+                    <div class="report-value" id="txnFeeDisplay-tiktok">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Service Fee</div>
+                    <div class="report-value" id="serviceFeeDisplay-tiktok">$0.00</div>
+                </div>
+                <div class="report-row">
+                    <div class="report-label" style="padding-left: 20px;">- Seller Shipping</div>
+                    <div class="report-value" id="sellerShippingDisplay-tiktok">$0.00</div>
+                </div>
+                <div class="report-row highlight">
+                    <div class="report-label">NET PROFIT/(LOSS)</div>
+                    <div class="report-value" id="nettProfitLoss-tiktok">$0.00</div>
+                </div>
+                <div class="report-row highlight">
+                    <div class="report-label">NET CASH FLOW</div>
+                    <div class="report-value" id="netCashFlow-tiktok">$0.00</div>
+                </div>
+                
+
+
+            </div>
+        </div>
+        
+        <div class="report-section" style="margin-top: 20px;">
+            <div class="report-header">Performance Metrics</div>
+            <div class="report-body">
+                <div class="metrics-container">
+                    <div class="metric-card">
+                        <div>Net Profit %</div>
+                        <div class="metric-value" id="netProfitPct-tiktok">0.00%</div>
+                        <div>(Net Profit / Net Price)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div>Margin %</div>
+                        <div class="metric-value" id="marginPct-tiktok">0.00%</div>
+                        <div>(Net Profit / COGS)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Summary" class="tabcontent">
+        <h2>Platform Comparison Summary</h2>
+        
+        <div class="summary-header">
+            <div class="summary-platform">
+                <h3>Shopee</h3>
+                <div>Gross Price: <span class="summary-value" id="summary-grossPrice-shopee">$0.00</span></div>
+                <div>Discount: <span class="summary-value" id="summary-discount-shopee">$0.00</span></div>
+            </div>
+            <div class="summary-platform">
+                <h3>Lazada</h3>
+                <div>Gross Price: <span class="summary-value" id="summary-grossPrice-lazada">$0.00</span></div>
+                <div>Discount: <span class="summary-value" id="summary-discount-lazada">$0.00</span></div>
+            </div>
+            <div class="summary-platform">
+                <h3>TikTok</h3>
+                <div>Gross Price: <span class="summary-value" id="summary-grossPrice-tiktok">$0.00</span></div>
+                <div>Discount: <span class="summary-value" id="summary-discount-tiktok">$0.00</span></div>
+            </div>
+        </div>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Shopee</th>
+                    <th>Lazada</th>
+                    <th>TikTok</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Net Price</td>
+                    <td id="summary-netPrice-shopee">$0.00</td>
+                    <td id="summary-netPrice-lazada">$0.00</td>
+                    <td id="summary-netPrice-tiktok">$0.00</td>
+                </tr>
+                <tr>
+                    <td>Gross Profit</td>
+                    <td id="summary-grossProfit-shopee">$0.00</td>
+                    <td id="summary-grossProfit-lazada">$0.00</td>
+                    <td id="summary-grossProfit-tiktok">$0.00</td>
+                </tr>
+                <tr>
+                    <td>Net Profit/(Loss)</td>
+                    <td id="summary-nettProfitLoss-shopee">$0.00</td>
+                    <td id="summary-nettProfitLoss-lazada">$0.00</td>
+                    <td id="summary-nettProfitLoss-tiktok">$0.00</td>
+                </tr>
+                <tr>
+                    <td>Net Profit %</td>
+                    <td id="summary-netProfitPct-shopee">0.00%</td>
+                    <td id="summary-netProfitPct-lazada">0.00%</td>
+                    <td id="summary-netProfitPct-tiktok">0.00%</td>
+                </tr>
+                <tr>
+                    <td>Net Cash Flow</td>
+                    <td id="summary-netCashFlow-shopee">$0.00</td>
+                    <td id="summary-netCashFlow-lazada">$0.00</td>
+                    <td id="summary-netCashFlow-tiktok">$0.00</td>
+                </tr>
+                <tr>
+                    <td>Margin %</td>
+                    <td id="summary-marginPct-shopee">0.00%</td>
+                    <td id="summary-marginPct-lazada">0.00%</td>
+                    <td id="summary-marginPct-tiktok">0.00%</td>
+                </tr>
+
+
+                <tr>
+                    <td>Commission Fee</td>
+                    <td id="summary-commsFee-shopee">$0.00</td>
+                    <td id="summary-commsFee-lazada">$0.00</td>
+                    <td id="summary-commsFee-tiktok">$0.00</td>
+                </tr>
+                <tr>
+                    <td>Transaction Fee</td>
+                    <td id="summary-txnFee-shopee">$0.00</td>
+                    <td id="summary-txnFee-lazada">$0.00</td>
+                    <td id="summary-txnFee-tiktok">$0.00</td>
+                </tr>
+                <tr>
+                    <td>Service Fee</td>
+                    <td id="summary-serviceFee-shopee">$0.00</td>
+                    <td id="summary-serviceFee-lazada">$0.00</td>
+                    <td id="summary-serviceFee-tiktok">$0.00</td>
+                </tr>
+                <tr>
+                    <td>Seller Shipping</td>
+                    <td id="summary-sellerShipping-shopee">$0.00</td>
+                    <td id="summary-sellerShipping-lazada">$0.00</td>
+                    <td id="summary-sellerShipping-tiktok">$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Including JavaScript file -->
+    <script src="script.js"></script>
+
+<!-- Add this right before </body> -->
+    <div class="fixed-buttons">
+      <button class="fixed-calc-btn" onclick="handleFixedCalculate()">Calculate</button>
+      <button class="fixed-reset-btn" onclick="handleFixedReset()">Reset</button>
+    </div>
+
+</body>
+</html>
