@@ -275,12 +275,4 @@ body {
 
 
 
-        /* Hide debug output on touch devices */
-        @media (hover: none) and (pointer: coarse) {
-            #debug-output {
-                display: none;
-            }
-        }
-
-
 
