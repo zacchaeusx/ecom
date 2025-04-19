@@ -17,7 +17,7 @@ function openTab(evt, tabName) {
         }
 
         
-        // ===== INSERT HELPER FUNCTION HERE =====
+        // ===== INSERT update/color HELPER FUNCTION HERE =====
         function applyColorClass(elementId, valueElementId) {
             const valueText = document.getElementById(valueElementId).textContent;
             const cell = document.getElementById(elementId);
@@ -26,10 +26,14 @@ function openTab(evt, tabName) {
             // Check if text starts with '-' (now properly formatted)
             cell.className = valueText.startsWith('-') ? 'negative' : 'positive';
         }
+        // ===== END OF update/color HELPER FUNCTION =====
 
+        
 
-
-        // ===== END OF HELPER FUNCTION =====
+        function debugLog(message) {
+            const debugDiv = document.getElementById('debug-output');
+            debugDiv.innerHTML += `<p>${message}</p>`;
+        }
 
 
         function calculate(platform) {
@@ -68,6 +72,11 @@ function openTab(evt, tabName) {
             const netCashFlow = netPrice - commsFee - txnFee - sellerShipping - serviceFee;
 
 
+
+            debugLog(`Calculating for ${platform}`)
+            debugLog(`CF = ${netCashFlow.toFixed(2)}`)
+
+            
             
             // Calculate metrics
             const netProfitPct = (nettProfitLoss / netPrice) * 100;
@@ -284,4 +293,17 @@ function openTab(evt, tabName) {
             const platform = activeTab.id.toLowerCase();
             resetTab(platform);
           }
-        } 
+        }
+
+        function debugLog(message) {
+            const debugOutput = document.getElementById('debug-output');
+            const newEntry = document.createElement('div');
+            newEntry.textContent = message;
+            debugOutput.appendChild(newEntry);
+            
+            // Add line break after each message
+            debugOutput.appendChild(document.createElement('br'));
+            
+            // Auto-scroll to bottom
+            debugOutput.scrollTop = debugOutput.scrollHeight;
+        }

@@ -272,3 +272,8 @@ body {
         .fixed-reset-btn:hover {
           background-color: #d32f2f;
         }
+
+        /* Hide fixed buttons on Summary tab */
+        #Summary ~ .fixed-buttons {
+            display: none;
+        }
