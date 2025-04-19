@@ -273,6 +273,12 @@ body {
           background-color: #d32f2f;
         }
 
+        #debug-output {
+            margin: 20px auto;
+            width: calc(100% - 40px);
+            max-width: 1000px; /* Match your calculator max-width */
+            /* rest of styles */
+        }
 
 
 
