@@ -275,10 +275,23 @@ body {
 
         #debug-output {
             margin: 20px auto;
-            width: calc(100% - 40px);
-            max-width: 1000px; /* Match your calculator max-width */
-            /* rest of styles */
+            width: 90%;
+            max-width: 1000px;
+            height: 200px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow-y: auto;
+            font-family: monospace;
+            box-sizing: border-box;
         }
 
+        @media (max-width: 768px) {
+            #debug-output {
+                width: calc(100% - 40px); /* Full width on small screens minus margins */
+                margin: 20px 20px; /* Consistent side margins */
+            }
+        }
 
 

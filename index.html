@@ -758,11 +758,11 @@
 
 
 
-
     <!-- debug output -->
     <div id="debug-output" style="
         margin: 20px auto;
-        width: 1000px; /* Match your calculator width */
+        width: 90%; /* Responsive width */
+        max-width: 1000px; /* Matches your calculator's max-width */
         height: 200px;
         background: white;
         padding: 10px;
@@ -770,7 +770,7 @@
         border-radius: 5px;
         overflow-y: auto;
         font-family: monospace;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-sizing: border-box; /* Ensures padding is included in width */
     "> 
     </div>
 
