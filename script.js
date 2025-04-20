@@ -178,7 +178,7 @@ function openTab(evt, tabName) {
                 },
                 lazada: {
                     grossPrice: 16,
-                    discount: 5,
+                    discount: 10,
                     cogs: 0.75,
                     units: 6,
                     boxCost: 0.44,
