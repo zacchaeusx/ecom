@@ -185,13 +185,13 @@ function openTab(evt, tabName) {
                     boxUnits: 1,
                     gst: 9,
                     commission: 4.36,
-                    grossTxnFee: 2,
+                    grossTxnFee: 3,
                     nettServiceFee: 0,
                     sellerVouchers: 0,
                     lazadaVouchers: 0,
                     lazadaCoins: 0,
                     buyerShipping: 1.99,
-                    sellerShipping: 1.53
+                    sellerShipping: 2.03
                 },
                 tiktok: {
                     grossPrice: 16,
