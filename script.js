@@ -73,12 +73,17 @@ function openTab(evt, tabName) {
             const netCashFlow = netPrice - commsFee - txnFee - sellerShipping - serviceFee;
 
 
+            //Customer Cost
+            const custcostpu = (netPrice + buyerShipping) / units
+            document.getElementById(`custcostpu-${platform}`).textContent = '$' + custcostpu.toFixed(2);
 
+            //debug
             debugLog(`Calculating for ${platform}`)
             debugLog(`CF = ${netCashFlow.toFixed(2)}`)
             debugLog(`Net Profit = ${nettProfitLoss.toFixed(2)}`)
             debugLog(`COGS+Box = ${grossCost.toFixed(2)}`)
-
+            debuglog(`CustNetCost = ${(netPrice + buyerShipping).toFixed(2)}`)
+            debuglog(`Total Units = ${units.toFixed(0)}`)
             
             
             // Calculate metrics
@@ -239,6 +244,9 @@ function openTab(evt, tabName) {
                     document.getElementById(`grossPriceDisplay-${platform}`).textContent;
                 document.getElementById(`summary-discount-${platform}`).textContent = 
                     document.getElementById(`discountAmount-${platform}`).textContent;
+                document.getElementById(`custcostperunit-${platform}`).textContent =
+                    document.getElementById(`custcostpu-${platform}`).textContent;
+
 
 
                 // Color-coded updates (using the helper function)
