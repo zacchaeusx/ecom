@@ -68,6 +68,7 @@ function openTab(evt, tabName) {
             const totalCogs = cogs * units;
             const totalBoxCost = boxCost * boxUnits;
             const grossProfit = netPrice - totalCogs - totalBoxCost;
+            const grossCost = totalCogs + totalBoxCost
             const nettProfitLoss = grossProfit - commsFee - txnFee - serviceFee - sellerShipping;
             const netCashFlow = netPrice - commsFee - txnFee - sellerShipping - serviceFee;
 
@@ -80,7 +81,7 @@ function openTab(evt, tabName) {
             
             // Calculate metrics
             const netProfitPct = (nettProfitLoss / netPrice) * 100;
-            const marginPct = (nettProfitLoss / totalCogs) * 100;
+            const marginPct = (nettProfitLoss / grossCost) * 100;
             
             // Display results
             document.getElementById(`netTxnFeePct-${platform}`).value = (netTxnFeePct * 100).toFixed(2) + '%';
