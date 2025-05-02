@@ -295,3 +295,11 @@ body {
         }
 
 
+        @media (max-width: 768px) {
+          .fixed-buttons {
+            bottom: 10px;
+            right: 10px;
+          }
+        }
+
+
