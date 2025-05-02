@@ -76,6 +76,8 @@ function openTab(evt, tabName) {
 
             debugLog(`Calculating for ${platform}`)
             debugLog(`CF = ${netCashFlow.toFixed(2)}`)
+            debugLog(`Net Profit = ${nettProfitLoss.toFixed(2)}`)
+            debugLog(`COGS+Box = ${grossCost.toFixed(2)}`)
 
             
             
