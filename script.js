@@ -57,7 +57,8 @@ function openTab(evt, tabName) {
             // Calculate fields
             const netTxnFeePct = grossTxnFee * (1 + gst);
             const commsBasePrice = grossPrice - (discount * grossPrice) - sellerVouchers;
-            const txnBasePrice = commsBasePrice - platformVouchers - platformCoins + buyerShipping;
+            //const txnBasePrice = commsBasePrice - platformVouchers - platformCoins + buyerShipping;
+            const txnBasePrice = commsBasePrice + buyerShipping;
             const commsFee = commsBasePrice * commission;
             const txnFee = txnBasePrice * netTxnFeePct;
             const serviceFee = (txnBasePrice - buyerShipping)* nettServiceFee;
@@ -74,7 +75,7 @@ function openTab(evt, tabName) {
 
 
             //Customer Cost
-            const custcostpu = (netPrice + buyerShipping) / units
+            const custcostpu = (netPrice + buyerShipping - platformVouchers) / units
             document.getElementById(`custcostperunit-${platform}`).textContent = '$' + custcostpu.toFixed(2);
 
             //debug
