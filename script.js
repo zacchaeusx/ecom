@@ -172,7 +172,7 @@ function openTab(evt, tabName) {
                 shopee: {
                     grossPrice: 16,
                     discount: 10,
-                    cogs: 0.75,
+                    cogs: 0.85,
                     units: 6,
                     boxCost: 0.37,
                     boxUnits: 1,
@@ -189,7 +189,7 @@ function openTab(evt, tabName) {
                 lazada: {
                     grossPrice: 16,
                     discount: 10,
-                    cogs: 0.75,
+                    cogs: 0.85,
                     units: 6,
                     boxCost: 0.37,
                     boxUnits: 1,
@@ -205,15 +205,15 @@ function openTab(evt, tabName) {
                 },
                 tiktok: {
                     grossPrice: 16,
-                    discount: 15,
-                    cogs: 0.75,
+                    discount: 10,
+                    cogs: 0.85,
                     units: 6,
                     boxCost: 0.37,
                     boxUnits: 1,
                     gst: 9,
-                    commission: 4.905,
-                    grossTxnFee: 2,
-                    nettServiceFee: 0,
+                    commission: 5.995, //old 4.905
+                    grossTxnFee: 2, 
+                    nettServiceFee: 5.45, //old 0.00
                     sellerVouchers: 0,
                     tiktokVouchers: 0,
                     tiktokCoins: 0,
