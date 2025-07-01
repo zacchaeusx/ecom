@@ -204,7 +204,7 @@ function openTab(evt, tabName) {
                     sellerShipping: 2.03
                 },
                 tiktok: {
-                    grossPrice: 16.5,
+                    grossPrice: 16.2,
                     discount: 10,
                     cogs: 0.85,
                     units: 6,
