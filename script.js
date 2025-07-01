@@ -170,11 +170,11 @@ function openTab(evt, tabName) {
             // Define default values for each platform
             const defaults = {
                 shopee: {
-                    grossPrice: 16,
+                    grossPrice: 16.20,
                     discount: 10,
                     cogs: 0.85,
                     units: 6,
-                    boxCost: 0.37,
+                    boxCost: 0.4,
                     boxUnits: 1,
                     gst: 9,
                     commission: 7.63,
@@ -187,11 +187,11 @@ function openTab(evt, tabName) {
                     sellerShipping: 2.03
                 },
                 lazada: {
-                    grossPrice: 16,
+                    grossPrice: 16.20,
                     discount: 10,
                     cogs: 0.85,
                     units: 6,
-                    boxCost: 0.37,
+                    boxCost: 0.4,
                     boxUnits: 1,
                     gst: 9,
                     commission: 4.36,
@@ -204,11 +204,11 @@ function openTab(evt, tabName) {
                     sellerShipping: 2.03
                 },
                 tiktok: {
-                    grossPrice: 16,
+                    grossPrice: 16.5,
                     discount: 10,
                     cogs: 0.85,
                     units: 6,
-                    boxCost: 0.37,
+                    boxCost: 0.4,
                     boxUnits: 1,
                     gst: 9,
                     commission: 5.995, //old 4.905
