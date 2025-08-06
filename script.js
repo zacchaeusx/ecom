@@ -194,7 +194,7 @@ function openTab(evt, tabName) {
                     boxCost: 0.4,
                     boxUnits: 1,
                     gst: 9,
-                    commission: 4.36,
+                    commission: 5.45,
                     grossTxnFee: 3,
                     nettServiceFee: 3.27,
                     sellerVouchers: 0,
