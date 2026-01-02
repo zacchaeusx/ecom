@@ -179,12 +179,12 @@ function openTab(evt, tabName) {
                     gst: 9,
                     commission: 7.63,
                     grossTxnFee: 3,
-                    nettServiceFee: 3.27,
+                    nettServiceFee: 5.45,
                     sellerVouchers: 0,
                     shopeeVouchers: 0,
                     shopeeCoins: 0,
                     buyerShipping: 1.99,
-                    sellerShipping: 2.03
+                    sellerShipping: 2.30
                 },
                 lazada: {
                     grossPrice: 16.50,
