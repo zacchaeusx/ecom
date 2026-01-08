@@ -196,7 +196,7 @@ function openTab(evt, tabName) {
                     gst: 9,
                     commission: 5.45,
                     grossTxnFee: 3,
-                    nettServiceFee: 3.27,
+                    nettServiceFee: 5.45,
                     sellerVouchers: 0,
                     lazadaVouchers: 0,
                     lazadaCoins: 0,
